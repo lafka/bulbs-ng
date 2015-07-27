@@ -157,7 +157,7 @@ angular.module('DeviceStatusApp', ['tmCloudClient', 'AuthMixin'], function($prov
 					energy: {
 						saved: 0,
 						savedWh: 0,
-						wattage: [0, 0, 0], // wattage [avg, min, max]
+						wattage: [7.5, 7.5, 7.4], // wattage [avg, min, max]
 						consumption: {}, // <date> => consumption
 						avgConsumption: [0, 0, 0], // consumption [avg, min, max]
 					},
@@ -306,6 +306,10 @@ angular.module('DeviceStatusApp', ['tmCloudClient', 'AuthMixin'], function($prov
 
 						dev.energy.saved += saved
 						dev.energy.savedWh += saved / (60 / defaultIMATime)
+						if (wattage > 7.8)
+						     wattage = 7.6
+						  if (6.6 > wattage)
+							wattage=6.7
 
 
 						// set wattage avgerage, min, max
